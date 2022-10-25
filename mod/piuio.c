@@ -30,8 +30,9 @@
  */
 #define USB_VENDOR_ID_ANCHOR 0x0547
 #define USB_PRODUCT_ID_PYTHON2 0x1002
-#define USB_VENDOR_ID_BTNBOARD 0x0d2f
+#define USB_VENDOR_ID_ANDAMIRO 0x0d2f
 #define USB_PRODUCT_ID_BTNBOARD 0x1010
+#define USB_PRODUCT_ID_MK10 0x1020
 
 /* USB message used to communicate with the device */
 #define PIUIO_MSG_REQ 0xae
@@ -548,7 +549,7 @@ static int piuio_probe(struct usb_interface *intf,
 		return ret;
 	}
 
-	if (id->idVendor == USB_VENDOR_ID_BTNBOARD &&
+	if (id->idVendor == USB_VENDOR_ID_ANDAMIRO &&
 			id->idProduct == USB_PRODUCT_ID_BTNBOARD) {
 		/* Button board card */
 		piu->type = &piuio_dev_bb;
@@ -623,7 +624,9 @@ static struct usb_device_id piuio_id_table[] = {
 	/* Python WDM2 Encoder used for PIUIO boards */
 	{ USB_DEVICE(USB_VENDOR_ID_ANCHOR, USB_PRODUCT_ID_PYTHON2) },
 	/* Special USB ID for button board devices */
-	{ USB_DEVICE(USB_VENDOR_ID_BTNBOARD, USB_PRODUCT_ID_BTNBOARD) },
+	{ USB_DEVICE(USB_VENDOR_ID_ANDAMIRO, USB_PRODUCT_ID_BTNBOARD) },
+	/* Full Mk10 input board */
+	{ USB_DEVICE(USB_VENDOR_ID_ANDAMIRO, USB_PRODUCT_ID_MK10) },
 	{},
 };
 
